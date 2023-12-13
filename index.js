@@ -1,30 +1,26 @@
-/*
-1 meter = 3.281 feet
-1 liter = 0.264 gallon
-1 kilogram = 2.204 pound
-*/
-
-//get elements
 const input = document.getElementById("insert");
 const button = document.getElementById("convert-btn");
-const feet = document.getElementById("feet");
-const gal = document.getElementById("gal");
-const pound = document.getElementById("pound");
+const resultsContainer = document.querySelector(".convert");
 
-// button click = converting
-button.addEventListener("click", function () {
-  //convertation
-  let f = Number(input.value) * 3.281;
-  let g = Number(input.value) * 0.264;
-  let p = Number(input.value) * 2.204;
-  //put on page with converted values.
-  feet.innerHTML = `${input.value} meters = ${f.toFixed(3)} feet |
-     ${input.value} feet = ${(input.value / 3.281).toFixed(3)} meter`;
-  gal.innerHTML = `${input.value} liters = ${g.toFixed(3)} gallons |
-     ${input.value} gallons = ${(input.value / 0.264).toFixed(3)} liter `;
-  pound.innerHTML = `${input.value} kilos = ${p.toFixed(3)} pounds |
-     ${input.value} pounds = ${(input.value / 2.204).toFixed(3)} kilogram`;
+button.addEventListener("click", function() {
+    let inputValue = Number(input.value);
+    let resultsHTML = `
+        <div class="amaro">
+            <h3 class="title">Length (Meter/Feet)</h3>
+            <p class="result">${inputValue} meters = ${(inputValue * 3.281).toFixed(3)} feet |
+            ${inputValue} feet = ${(inputValue / 3.281).toFixed(3)} meter</p>
+        </div>
+        <div class="amaro">
+            <h3 class="title">Volume (Liters/Gallons)</h3>
+            <p class="result">${inputValue} liters = ${(inputValue * 0.264).toFixed(3)} gallons |
+            ${inputValue} gallons = ${(inputValue / 0.264).toFixed(3)} liter</p>
+        </div>
+        <div class="amaro">
+            <h3 class="title">Mass (Kilograms/Pounds)</h3>
+            <p class="result">${inputValue} kilos = ${(inputValue * 2.204).toFixed(3)} pounds |
+            ${inputValue} pounds = ${(inputValue / 2.204).toFixed(3)} kilogram</p>
+        </div>
+    `;
+
+    resultsContainer.innerHTML = resultsHTML;
 });
-/*  input.value * 3.281 feet >> feet.innerHTML
-    1 liter = 0.264 gallon
-    1 kilogram = 2.204 pound */
